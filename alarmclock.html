@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Timer</title>
+</head>
+<body>
+	<h1>Timer</h1>
+	<label for="hours">Hours:</label>
+	<input type="number" id="hours" min="0" value="0"><br><br>
+	<label for="minutes">Minutes:</label>
+	<input type="number" id="minutes" min="0" max="59" value="0"><br><br>
+	<label for="seconds">Seconds:</label>
+	<input type="number" id="seconds" min="0" max="59" value="0"><br><br>
+	<button onclick="startTimer()">Start Timer</button>
+	<button onclick="stopTimer()">Stop Timer</button>
+	<script>
+		var timer;
+		function startTimer() {
+			var hours = parseInt(document.getElementById("hours").value);
+			var minutes = parseInt(document.getElementById("minutes").value);
+			var seconds = parseInt(document.getElementById("seconds").value);
+			var totalSeconds = hours * 3600 + minutes * 60 + seconds;
+			timer = setTimeout(function() {
+				alert("Timer expired!");
+				var audio = new Audio('sound.mp3');
+				audio.play();
+			}, totalSeconds * 1000);
+		}
+		function stopTimer() {
+			clearTimeout(timer);
+		}
+	</script>
+</body>
+</html>
